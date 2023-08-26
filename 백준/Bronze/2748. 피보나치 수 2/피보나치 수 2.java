@@ -1,12 +1,14 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
 
 	static long[] arr;
 	
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int a = sc.nextInt();
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // 선언
+		int a = Integer.parseInt(br.readLine()); 
 		
 		arr = new long[a+1];
 		
@@ -18,7 +20,6 @@ public class Main {
 		arr[1] = 1;
 		
 		System.out.println(fn(a));
-		sc.close();
 	}
 
 	public static long fn(int n) {
