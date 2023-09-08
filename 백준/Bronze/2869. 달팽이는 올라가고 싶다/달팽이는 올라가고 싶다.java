@@ -1,17 +1,22 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Main {
 
-		public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int[] arr = Arrays.asList(br.readLine().split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-		int day = (arr[2]-arr[1])/(arr[0]-arr[1]);
-		if ((arr[2]-arr[1])%(arr[0]-arr[1]) == 0) {
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		int A = Integer.parseInt(st.nextToken());
+        int B = Integer.parseInt(st.nextToken());
+        int V = Integer.parseInt(st.nextToken());
+        
+        int day = (V-B) / (A-B);
+        
+		if ((V - B) % (A - B) == 0) {
 			System.out.println(day);
-		}else {
-			System.out.println(day+1);
+		} else {
+			System.out.println(day + 1);
 		}
 	}
 }
