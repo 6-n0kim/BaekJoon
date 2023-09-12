@@ -1,22 +1,29 @@
-import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 public class Main {
-	public static void main(String[] args) throws Exception {
+	
+	public static void main(String[] arg) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringBuilder sb = new StringBuilder();
-		
-		String s = br.readLine();
-		int arr[] = new int[s.length()];
-		for (int i = 0; i < s.length(); i++) {
-			arr[i]= s.charAt(i)-48;
+		String str =br.readLine();
+		int size = str.length();
+		int[] num = new int[size];
+		int temp=0;
+		for(int i=0;i<size;i++){
+			num[i] = Character.getNumericValue(str.charAt(i));
 		}
-		Arrays.sort(arr);
 		
-		for (int i = arr.length-1; i >= 0; i--) {
-			sb.append(arr[i]);
+		for(int i=0;i<size;i++){
+			for(int j=i;j<size;j++){
+				if(num[i]<num[j]){
+					temp = num[i];
+					num[i]= num[j];
+					num[j] = temp;
+				}
+			}
 		}
-		System.out.println(sb);
+		
+		for(int i:num) System.out.print(i);
 	}
 }
