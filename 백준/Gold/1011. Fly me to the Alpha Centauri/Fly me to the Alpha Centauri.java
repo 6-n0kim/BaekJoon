@@ -12,20 +12,16 @@ public class Main {
 			int a = Integer.parseInt(st.nextToken());
 			int b = Integer.parseInt(st.nextToken());
 			int c = b - a;
-			sb.append(fn(c)).append("\n");
+			int max = (int) Math.sqrt(c);
+			int rs = 2 * max;
+			if (max == Math.sqrt(c)) {
+				rs -= 1;
+			} else if (c <= max * max + max) {
+			} else {
+				rs += 1;
+			}
+			sb.append(rs).append("\n");
 		}
 		System.out.println(sb);
-	}
-
-	private static int fn(int c) {
-		int max = (int) Math.sqrt(c);
-		int rs = 2 * max;
-		if (max == Math.sqrt(c)) {
-			rs -= 1;
-		} else if (c <= max * max + max) {
-		} else {
-			rs += 1;
-		}
-		return rs;
 	}
 }
