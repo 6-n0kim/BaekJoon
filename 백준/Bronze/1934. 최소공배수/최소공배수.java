@@ -1,18 +1,12 @@
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.IOException;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
-		int n = Integer.parseInt(br.readLine());
-		StringTokenizer st;
+		int n = readInt();
 		for (int i = 0; i < n; i++) {
-			st = new StringTokenizer(br.readLine());
-			int a = Integer.parseInt(st.nextToken());
-			int b = Integer.parseInt(st.nextToken());
+			int a = readInt();
+			int b = readInt();
 			int min = Math.min(a, b);
 			int mul = 1;
 			while (true) {
@@ -26,4 +20,18 @@ public class Main {
 		}
 		System.out.println(sb);
 	}
+	
+	static int readInt() throws IOException {
+        int sum = 0;
+        boolean isNegative = false;
+        while (true) {
+            int input = System.in.read();
+            if (input == '\n' || input == ' ')
+                return isNegative ? sum * -1 : sum;
+            else if (input == '-')
+                isNegative = true;
+            else
+                sum = (sum * 10) + input - '0';
+        }
+    }
 }
