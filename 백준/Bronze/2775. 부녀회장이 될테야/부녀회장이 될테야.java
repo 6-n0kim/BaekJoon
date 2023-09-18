@@ -2,9 +2,15 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class Main {
+	static int dp[][];
+
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
+		dp = new int[15][15];
+		for (int i = 0; i < dp.length; i++) {
+			dp[0][i] = i;
+		}
 		int t = Integer.parseInt(br.readLine());
 
 		for (int i = 0; i < t; i++) {
@@ -22,8 +28,12 @@ public class Main {
 			a += n;
 		} else {
 			for (int i = 1; i <= n; i++) {
-				a += fn(k - 1, i);
+				if (dp[k - 1][i] == 0) {
+					dp[k - 1][i] = fn(k - 1, i);
+				}
+				a += dp[k - 1][i];
 			}
+			 dp[k][n] = a;
 		}
 		return a;
 	}
