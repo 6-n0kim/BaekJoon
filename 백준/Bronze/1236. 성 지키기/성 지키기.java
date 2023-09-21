@@ -14,12 +14,11 @@ public class Main {
 		boolean col[] = new boolean[m];
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = br.readLine().split("");
-		}
-		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[i].length; j++) {
 				if (!row[i] && arr[i][j].equals("X")) {
 					row[i] = true;
-				} if (!col[j] && arr[i][j].equals("X")) {
+				}
+				if (!col[j] && arr[i][j].equals("X")) {
 					col[j] = true;
 				}
 			}
