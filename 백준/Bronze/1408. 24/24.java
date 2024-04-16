@@ -9,18 +9,47 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		int arr[] = Stream.of(st.nextToken().split(":")).mapToInt(Integer::parseInt).toArray();
-		int now = (3600 * arr[0]) + (60 * arr[1]) + arr[2];
 
 		st = new StringTokenizer(br.readLine());
-		arr = Stream.of(st.nextToken().split(":")).mapToInt(Integer::parseInt).toArray();
-		int start = (3600 * arr[0]) + (60 * arr[1]) + arr[2];
-		
-		int time = 0;
-		if (start > now) {
-			time = start - now;
-		}else { 
-			time = (24*3600) - (now - start);
+		int arr2[] = Stream.of(st.nextToken().split(":")).mapToInt(Integer::parseInt).toArray();
+		int h = arr2[0] - arr[0];
+		int m = arr2[1] - arr[1];
+		int s = arr2[2] - arr[2];
+
+		String answer = "";
+		if (s < 0) {
+			s += 60;
+			m -= 1;
 		}
-		System.out.format("%02d:%02d:%02d", (time / 3600), ((time / 60) % 60), (time % 60));
+		if (m < 0) {
+			m += 60;
+			h -= 1;
+		}
+		if (m < 0) {
+			m += 60;
+			h -= 1;
+		}
+		if (h < 0) {
+			h += 24;
+		}
+
+		if (h < 10) {
+			answer += "0" + h;
+		} else {
+			answer += h;
+		}
+		answer += ":";
+		if (m < 10) {
+			answer += "0" + m;
+		} else {
+			answer += m;
+		}
+		answer += ":";
+		if (s < 10) {
+			answer += "0" + s;
+		} else {
+			answer += s;
+		}
+		System.out.println(answer);
 	}
 }
