@@ -7,7 +7,7 @@ public class Main {
 		int n = Integer.parseInt(br.readLine());
 		int cnt = 0;
 		for (int i = 0; i < n; i++) {
-			int a = Integer.parseInt(br.readLine().replace("D-", ""));
+			int a = Integer.parseInt(br.readLine().substring(2));
 			if (a < 91) {
 				cnt++;
 			}
