@@ -1,36 +1,36 @@
-import java.util.Scanner;
+import java.io.*;
 
 public class Main {
-	public static void main(String[] args) {
+    public static void main(String args[]) throws IOException {
+        int T = readInt();
+        StringBuilder sb = new StringBuilder();
+        while(T-->0){
+            int x1 = readInt(), y1 = readInt(), r1 = readInt();
+            int x2 = readInt(), y2 = readInt(), r2 = readInt();
+            double r = Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
+            if(r<Math.abs(r2-r1) || r > r1+r2)
+                sb.append(0+"\n");
+            else if(Math.abs(r2-r1)<r && r<r1+r2)
+                sb.append(2+"\n");
+            else if(r>0)
+                sb.append(1+"\n");
+            else
+                sb.append(-1+"\n");
+        }
+        System.out.println(sb);
+    }
 
-		Scanner in = new Scanner(System.in);
-		StringBuilder sb = new StringBuilder();
-
-		int T = in.nextInt();
-
-		while (T-- > 0) {
-			int x1 = in.nextInt();
-			int y1 = in.nextInt();
-			int r1 = in.nextInt();
-			int x2 = in.nextInt();
-			int y2 = in.nextInt();
-			int r2 = in.nextInt();
-			int distance = (int) (Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-
-			if (x1 == x2 && y1 == y2 && r1 == r2) {
-				sb.append(-1).append("\n");
-			} else if (distance > Math.pow(r1 + r2, 2)) {
-				sb.append(0).append("\n");
-			} else if (distance < Math.pow(r2 - r1, 2)) {
-				sb.append(0).append("\n");
-			} else if (distance == Math.pow(r2 - r1, 2)) {
-				sb.append(1).append("\n");
-			} else if (distance == Math.pow(r1 + r2, 2)) {
-				sb.append(1).append("\n");
-			} else {
-				sb.append(2).append("\n");
-			}
-		}
-		System.out.println(sb);
-	}
+    static int readInt() throws IOException {
+        int sum = 0;
+        boolean isNegative = false;
+        while (true) {
+            int input = System.in.read();
+            if (input == '\n' || input == ' ')
+                return isNegative ? sum * -1 : sum;
+            else if (input == '-')
+                isNegative = true;
+            else
+                sum = (sum * 10) + input - '0';
+        }
+    }
 }
