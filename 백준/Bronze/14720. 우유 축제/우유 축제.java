@@ -7,19 +7,18 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
-		int arr[] = new int[n];
 		String s = "딸";
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		int cnt = 0;
 		for (int i = 0; i < n; i++) {
-			arr[i] = Integer.parseInt(st.nextToken());
-			if (s.equals("딸") && arr[i] == 0) {
+			int a = Integer.parseInt(st.nextToken());
+			if (s.equals("딸") && a == 0) {
 				cnt++;
 				s = "초";
-			} else if (s.equals("초") && arr[i] == 1) {
+			} else if (s.equals("초") && a == 1) {
 				cnt++;
 				s = "바";
-			} else if (s.equals("바") && arr[i] == 2) {
+			} else if (s.equals("바") && a == 2) {
 				cnt++;
 				s = "딸";
 			}
