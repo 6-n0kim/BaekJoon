@@ -13,13 +13,13 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		
 		int g = Integer.parseInt(st.nextToken());
-		while(st.hasMoreTokens()) { // 전체 최대공약수 구하기
+		while(st.hasMoreTokens()) {
 			g = gcd(g, Integer.parseInt(st.nextToken()));
 		}
 		
 		int size = (int)Math.sqrt(g);
 		ArrayList<Integer> res = new ArrayList<>();
-		for(int i=1; i<=size; i++) { // 최대공약수의 약수 찾기
+		for(int i=1; i<=size; i++) {
 			if((g % i) == 0) {
 				res.add(i);
 				if((g / i) != i) {
