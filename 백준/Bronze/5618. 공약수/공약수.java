@@ -1,31 +1,43 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.StringTokenizer;
 
 public class Main {
+	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int n = Integer.parseInt(br.readLine());
-		int arr[] = new int[n];
+		br.readLine();
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		int min = Integer.MAX_VALUE;
-		for (int i = 0; i < n; i++) {
-			arr[i] = Integer.parseInt(st.nextToken());
-			if (min >= arr[i]) {
-				min = arr[i];
-			}
+		
+		int g = Integer.parseInt(st.nextToken());
+		while(st.hasMoreTokens()) { // 전체 최대공약수 구하기
+			g = gcd(g, Integer.parseInt(st.nextToken()));
 		}
-		for (int i = 1; i <= min; i++) {
-			int cnt = 0;
-			for (int j = 0; j < arr.length; j++) {
-				if (arr[j] % i == 0) {
-					cnt++;
-				}
-				if (cnt == arr.length) {
-					System.out.println(i);
+		
+		int size = (int)Math.sqrt(g);
+		ArrayList<Integer> res = new ArrayList<>();
+		for(int i=1; i<=size; i++) { // 최대공약수의 약수 찾기
+			if((g % i) == 0) {
+				res.add(i);
+				if((g / i) != i) {
+					res.add(g / i);
 				}
 			}
 		}
+		Collections.sort(res);
+		
+		for(int i : res) {
+			System.out.println(i);
+		}
+		
+		br.close();
 	}
+	
+	public static int gcd(int a, int b) {
+		return (b==0) ? a : gcd(b, a%b);
+	}
+	
 }
